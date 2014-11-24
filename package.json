@@ -1,0 +1,36 @@
+{
+  "name": "avote",
+  "version": "0.0.0",
+  "description": "A vote is an object this lib can handle",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stigok/avote.git"
+  },
+  "keywords": [
+    "vote",
+    "voting",
+    "poll",
+    "polls",
+    "question",
+    "questions",
+    "updown",
+    "thumbsup",
+    "thumbsdown",
+    "hotnot",
+    "hotornot",
+    "avote"
+  ],
+  "author": "Stig Otnes Kolstad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stigok/avote/issues"
+  },
+  "homepage": "https://github.com/stigok/avote",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
+}
