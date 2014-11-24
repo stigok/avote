@@ -1,4 +1,4 @@
-/* http://www.quirksmode.org/js/xmlhttp.html */
+/* modified version of: http://www.quirksmode.org/js/xmlhttp.html */
 function sendRequest(url,callback,postData) {
 	var req = createXMLHTTPObject();
 	if (!req) return;
@@ -6,7 +6,7 @@ function sendRequest(url,callback,postData) {
 	req.open(method,url,true);
 	req.setRequestHeader('User-Agent','XMLHTTP/1.0');
 	if (postData)
-		req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		req.setRequestHeader('Content-type','application/json');
 	req.onreadystatechange = function () {
 		if (req.readyState != 4) return;
 		if (req.status != 200 && req.status != 304) {

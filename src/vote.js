@@ -1,36 +1,27 @@
-$.widget("answa.vote", {
+var Answanet = function(endpoint, callback) {
+    this.endpoint = endpoint;
+    this.fingerprint = new Fingerprint().get();
+    this.callback = callback;
+};
 
-    options : {
-        pollEndpoint : "http://answa.net/vote.php",
-        votePosted : {}
-    },
-
-    _state : {
-        clientId : ""
-    },
-
-    _create : function() {
-        this.state.clientId = new Fingerprint().get();
-    },
-
-    _postVote : function(isPositive, pollId) {
+Answanet.prototype = {
+    vote : function(pollId, answer) {
         $.post(
-            this.settings.pollEndpoint,
+            this.endpoint,
             {
-                "positive" : isPositive,
-                "pollid" : pollId,
-                "clientId" : this.state.clientId
+                "v" : answer ? 1 : 0,
+                "p" : pollId,
+                "x" : this.state.clientId
             },
-            this.options.votePosted,
-            "json"
+            function(data, textStatus, jxXHR) {
+                this.callback(data);
+            }
         );
     },
-
-    voteUp : function(pollId) {
-        postVote(true, pollId);
+    yes : function(pollid) {
+        vote(pollid, true);
     },
-
-    voteDown : function(pollId) {
-        postVote(false, pollId);
+    no : function(pollid) {
+        vote(pollid, false);
     }
-}
+};
